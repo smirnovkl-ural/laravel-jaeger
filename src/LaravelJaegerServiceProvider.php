@@ -31,7 +31,7 @@ final class LaravelJaegerServiceProvider extends ServiceProvider
             __DIR__ . '/../config/jaeger.php' => $this->app->configPath('jaeger.php'),
         ], 'config');
 
-        $this->app->singleton(Jaeger::class, static function () {
+        $this->app->scoped(Jaeger::class, static function () {
             $config = new Config(
                 config('jaeger.config'),
                 config('jaeger.service_name'),
